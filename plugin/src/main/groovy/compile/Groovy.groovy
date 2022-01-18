@@ -1,0 +1,3 @@
+package compile
+
+class Groovy { }
