@@ -9,19 +9,47 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
 }
-apply plugin: 'groovy'
-apply plugin: 'kotlin'
 
+project.plugins.apply("groovy")
+project.plugins.apply("kotlin")
+
+/**
+ * 1
+ */
+//compileGroovy {
+//    classpath += files(compileKotlin.destinationDir)
+//}
+
+/**
+ * 2
+ */
 compileGroovy {
-    // Groovy only needs the declared dependencies
-    // (and not longer the output of compileJava)
-    classpath = sourceSets.main.compileClasspath
+    doFirst {
+        println "compile groovy"
+    }
+
+}
+compileJava {
+    doFirst {
+        println "compile java"
+    }
 }
 compileKotlin {
     // Java also depends on the result of Groovy compilation
     // (which automatically makes it depend of compileGroovy)
-    classpath += files(sourceSets.main.groovy.classesDirectory)
+    doFirst {
+        println "compile kotlin"
+    }
+    classpath = sourceSets.main.compileClasspath
 }
+
+///**
+// * 3 wrong format
+// */
+//compileKotlin {
+//    dependsOn tasks.getByPath('compileGroovy')
+//    classpath += files(sourceSets.main.groovy.classesDirectory)
+//}
 dependencies {
     implementation gradleApi()
     implementation localGroovy()

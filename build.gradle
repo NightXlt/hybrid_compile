@@ -15,14 +15,16 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
 allprojects {
     repositories {
         google()
         jcenter()
-        mavenLocal()
+        mavenCentral()
     }
 }
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
 }

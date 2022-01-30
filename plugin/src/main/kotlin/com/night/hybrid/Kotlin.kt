@@ -1,6 +1,5 @@
-package com.night.hybrid.compile
+package com.night.hybrid
 
-import compile.Groovy
 
 /**
  * @Author: Night
@@ -8,5 +7,4 @@ import compile.Groovy
  * @Email: xiaolingtong.night@bytedance.com
  **/
 class Kotlin {
-    val groovy = Groovy()
 }
